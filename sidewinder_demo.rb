@@ -1,7 +1,7 @@
 require 'grid'
-require 'binary_tree'
+require 'sidewinder'
 
 grid = Grid.new(7, 36)
-BinaryTree.on(grid)
+Sidewinder.on(grid)
 
 puts grid
