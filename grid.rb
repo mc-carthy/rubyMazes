@@ -60,4 +60,32 @@ class Grid
             end
         end
     end
+
+    # Draw the maze
+    def to_s
+        output = "+" + "---+" * columns + "\n"
+
+        each_row do |row|
+            top = "|"
+            bottom = "+"
+
+            row.each do |cell|
+                cell = Cell.new(-1, -1) unless cell
+
+                body = "   "
+                east_boundary = (cell.linked?(cell.east) ? " " : "|")
+                top << body << east_boundary
+
+                south_bounday = (cell.linked?(cell.south) ? "   " : "---")
+
+                corner = "+"
+                bottom << south_bounday << corner
+            end
+
+            output << top << "\n"
+            output << bottom << "\n"
+        end
+
+        output
+    end
 end

@@ -23,7 +23,7 @@ class Cell
         @links.keys
     end
 
-    def linked
+    def linked?(cell)
         @links.key?(cell)
     end
 
