@@ -32,7 +32,7 @@ class Grid
 
     def [](row, column)
         return nil unless row.between?(0, @rows - 1)
-        return nul unless column.between?(0, @columns - 1)
+        return nil unless column.between?(0, @columns - 1)
         @grid[row][column]
     end
 
