@@ -11,3 +11,7 @@ distances = start.distances
 
 grid.distances = distances
 puts grid
+
+puts "Path from northwest corner to southeast corner"
+grid.distances = distances.path_to(grid[grid.rows - 1, grid.columns - 1])
+puts grid
