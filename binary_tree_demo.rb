@@ -5,3 +5,6 @@ grid = Grid.new(7, 36)
 BinaryTree.on(grid)
 
 puts grid
+
+img = grid.to_png
+img.save "binary_tree.png"
