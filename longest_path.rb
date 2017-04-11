@@ -5,6 +5,7 @@ require 'sidewinder'
 require 'aldous_broder'
 require 'wilsons'
 require 'hunt_and_kill'
+require 'recursive_backtracker'
 
 grid = DistanceGrid.new(7, 7)
 Sidewinder.on(grid)
