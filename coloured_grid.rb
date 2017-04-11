@@ -1,7 +1,7 @@
 require 'grid'
 require 'chunky_png'
 
-class ColoredGrid < Grid
+class ColouredGrid < Grid
 
     def distances=(distances)
         @distances = distances
