@@ -1,11 +1,11 @@
 require 'grid'
-require 'aldous_broder'
+require 'wilsons'
 
 grid = Grid.new(20, 20)
-AldousBroder.on(grid)
+Wilsons.on(grid)
 
 #puts grid
 
-filename = "mazeImages/aldous_broder.png"
+filename = "mazeImages/wilsons.png"
 grid.to_png.save(filename)
 puts "saved to #{filename}"

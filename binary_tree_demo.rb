@@ -7,4 +7,4 @@ BinaryTree.on(grid)
 puts grid
 
 img = grid.to_png
-img.save "binary_tree.png"
+img.save "mazeImages/binary_tree.png"

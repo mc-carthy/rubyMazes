@@ -1,15 +1,15 @@
-require 'colored_grid'
+require 'coloured_grid'
 
 require 'binary_tree'
 require 'sidewinder'
 
-grid = ColoredGrid.new(50, 50)
+grid = ColouredGrid.new(50, 50)
 Sidewinder.on(grid)
 
 start = grid[grid.rows / 2, grid.columns / 2]
 
 grid.distances = start.distances
 
-filename = "colorized.png"
+filename = "mazeImages/colorized.png"
 grid.to_png.save(filename)
 puts "saved to #{filename}"
