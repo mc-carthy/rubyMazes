@@ -2,6 +2,9 @@ require 'distance_grid'
 
 require 'binary_tree'
 require 'sidewinder'
+require 'aldous_broder'
+require 'wilsons'
+require 'hunt_and_kill'
 
 grid = DistanceGrid.new(7, 7)
 Sidewinder.on(grid)
