@@ -1,3 +1,5 @@
+require 'chunky_png'
+
 class Mask
  attr_reader :rows, :columns
 
@@ -5,9 +7,9 @@ class Mask
     lines = File.readlines(file).map { |line| line.strip } 
     lines.pop while lines.last.length < 1 
 
-    rows    = lines.length 
+    rows = lines.length 
     columns = lines.first.length 
-    mask    = Mask.new(rows, columns)
+    mask = Mask.new(rows, columns)
 
     mask.rows.times do |row| 
       mask.columns.times do |col|
@@ -15,6 +17,23 @@ class Mask
           mask[row, col] = false
         else
           mask[row, col] = true
+        end
+      end
+    end
+
+    mask
+  end
+
+  def self.from_png(file)
+    image = ChunkyPNG::Image.from_file(file)
+    mask = Mask.new(image.height, image.width)
+
+    mask.rows.times do |row|
+      mask.columns.times do |col|
+        if image[col, row] == ChunkyPNG::Color::BLACK
+          mask [row, col] = false
+        else
+          mask [row, col] = true
         end
       end
     end
