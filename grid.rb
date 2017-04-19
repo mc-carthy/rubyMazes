@@ -137,4 +137,17 @@ class Grid
         end
         list
     end
+
+    def braid(p = 1.0)
+        deadends.shuffle.each do |cell|
+            next if cell.links.count != 1 || rand > p
+
+            neighbours = cell.neighbours.reject { |n| cell.linked?(n) }
+            best = neighbours.select { |n| n.links.count == 1 }
+            best = neighbours if best.empty?
+
+            neighbour = best.sample
+            cell.link(neighbour)
+        end
+    end
 end

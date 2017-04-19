@@ -8,7 +8,9 @@ require 'hunt_and_kill'
 require 'recursive_backtracker'
 
 grid = DistanceGrid.new(7, 7)
-Sidewinder.on(grid)
+RecursiveBacktracker.on(grid)
+
+grid.braid(0.5)
 
 start = grid[0, 0]
 distances = start.distances
