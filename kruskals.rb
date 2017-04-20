@@ -30,7 +30,7 @@ class Kruskals
 
             winner = @set_for_cell[left]
             loser = @set_for_cell[right]
-            losers = @cells_in_set[loser] || right
+            losers = @cells_in_set[loser] || [right]
 
             losers.each do |cell|
                 @cells_in_set[winner] << cell
@@ -38,6 +38,32 @@ class Kruskals
             end
 
             @cells_in_set.delete(loser)
+        end
+
+        def add_crossing(cell)
+            return false if cell.links.any? ||
+                !can_merge?(cell.east, cell.west) ||
+                !can_merge?(cell.north, cell.south)
+            
+            @neighbours.delete_if { |left, right| left == cell || right == cell }
+
+            if rand(2) == 0 
+                merge(cell.west, cell)
+                merge(cell, cell.east)
+
+                @grid.tunnel_under(cell)
+                merge(cell.north, cell.north.south)
+                merge(cell.south, cell.south.north)
+            else
+                merge(cell.north, cell)
+                merge(cell, cell.south)
+
+                @grid.tunnel_under(cell)
+                merge(cell.west, cell.west.east)
+                merge(cell.east, cell.east.west)
+            end
+            
+            true
         end
     end
 
